@@ -15,21 +15,22 @@
 }
 
 #slot {
-    width: 100px;
-    height: 400px;
+    width: 500px;
+    height: 900px;
     margin: 0px auto -1px auto; 
 }
 
-#robot {
-    position: fixed;
-    top: 100px;
-    left: 300px;
-    z-index: -1;
+#machine{
+    background: url("playboy.jpg");
+    width: 425px;
+    height: 700px;
+    float: left;
 }
 
 #lever {
     position: relative;
-    top: 50px;
+    top: 175px;
+    left: 430px;
     width: 30px;
     height: 300px;
 }
@@ -104,7 +105,8 @@ $(function() {
 <body>
 	<canvas id="canvas" width="900" height="900"></canvas>
     <div id="slot">
-
+        <div id="machine">
+        </div>
         <div id="lever">
             <a href="#">
             <div id="ball" class="ui-corner-all"></div>
