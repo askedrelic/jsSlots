@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/vader/jquery-ui.css" type="text/css" />
+        <script src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+        google.load("jquery", "1.3.2");
+        google.load("jqueryui", "1.7.2");
+        </script>
+
+<style type="text/css">
+#canvas {
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+#slot {
+    width: 100px;
+    height: 400px;
+    margin: 0px auto -1px auto; 
+}
+
+#ball{
+    position:relative;
+    top: 50px;
+    left: 0px;
+
+    background-color: red; 
+    width: 30px; 
+    height: 30px;
+}
+
+#chain {
+    position:relative;
+    top: 200px;
+    left: 0px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+$(function() {
+    $("#ball").draggable({ axis: 'y' , cursor: 'move'});
+
+    function updateChain() {
+        var ball = $("#ball");
+        var chain = $("#chain");
+        var d1 = ball.offset();
+        var d2 = chain.offset();
+        var canvasEl = $("#canvas")[0];
+        var ctx = canvasEl.getContext("2d");
+        ctx.clearRect(0,0,canvasEl.width, canvasEl.height);
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+
+        //this was left in from working with lines. not sure how it works, but
+        //it adds a nice outline effect
+        ctx.beginPath();
+        ctx.moveTo(d1.left, d1.top);
+
+        ctx.rect(d2.left+10, d2.top, 10, d1.top+10-d2.top);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    };
+
+    $("#ball").bind('drag', function (event,ui) {
+            updateChain();
+    });
+
+    updateChain();
+});
+
+</script>
+    
+      </head>
+<body>
+	<canvas id="canvas" width="900" height="900"></canvas>
+    <div id="slot">
+
+        <a href="#">
+        <div id="ball" class="ui-corner-all"></div>
+        </a>
+
+        <div id="chain">
+        </div> 
+        
+    </div>
+<div id="debug"></div>
+</body>
+</html>    
+        
