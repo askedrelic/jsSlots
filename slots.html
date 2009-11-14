@@ -22,7 +22,7 @@
 
 #ball{
     position:relative;
-    top: 50px;
+    top: 0px;
     left: 0px;
 
     background-color: red; 
@@ -32,14 +32,22 @@
 
 #chain {
     position:relative;
-    top: 200px;
+    top: 150px;
     left: 0px;
+}
+
+#lever {
+    position: relative;
+    top: 50px;
+    width: 30px;
+    height: 360px;
 }
 
 </style>
 
 <script type="text/javascript">
-function updateChain() {
+//Global lever canvas drawing function
+function updateLever() {
     var ball = $("#ball");
     var chain = $("#chain");
     var d1 = ball.offset();
@@ -61,23 +69,23 @@ function updateChain() {
 };
 
 $(function() {
-    //$("#ball").draggable({ axis: 'y' , cursor: 'move', revert:true});
-    $("#ball").draggable({ axis: 'y' , cursor: 'move'});
+    $("#ball").draggable({ axis: 'y' , cursor: 'move', containment: '#lever'});
 
     $("#ball").bind('drag', function (event,ui) {
-        updateChain();
+        updateLever();
     });
 
+    //Messy section. Makes the line get updated hella faster and in the background, 
+    //while the "move back to home" animation is taking place.
     $("#ball").bind('dragstop', function (event,ui) {
-        var fasterUpdate = setInterval(updateChain, 10);
-        console.debug(fasterUpdate);
-        $("#ball").animate({top:50}, 1500, updateChain);
+        var fasterUpdate = setInterval(updateLever, 50);
+        $("#ball").animate({top:0}, 1500, updateLever);
         setTimeout(function () {
             clearInterval(fasterUpdate);
             }, 1500);
     });
 
-    updateChain();
+    updateLever();
 });
 
 
@@ -88,12 +96,13 @@ $(function() {
 	<canvas id="canvas" width="900" height="900"></canvas>
     <div id="slot">
 
-        <a href="#">
-        <div id="ball" class="ui-corner-all"></div>
-        </a>
-
-        <div id="chain">
-        </div> 
+        <div id="lever">
+            <a href="#">
+            <div id="ball" class="ui-corner-all"></div>
+            </a>
+            <div id="chain">
+            </div> 
+        </div>
         
     </div>
 <div id="debug"></div>
