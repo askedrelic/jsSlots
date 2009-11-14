@@ -49,7 +49,7 @@
     display: inline-block;
 }
 
-.spinner {
+.spinnerz {
     width: 75px;
     height: 94px;
     background-color: #fff;
@@ -116,6 +116,18 @@ function updateLever() {
     ctx.stroke();
 };
 
+function spin(div) {
+    var spinLoc = $(div).offset();
+    var newDiv = $("<div style='position:absolute; float:left; z-index: 100;'> lololol </div>");
+    newDiv
+        .hide()
+        .css('top', spinLoc.top+10)
+        .css('left', spinLoc.left+10);
+    $("#spin1").before(newDiv);
+    newDiv.slideToggle(300).animate({top:spinLoc.top+75}, 600).slideUp(300);
+    setTimeout(function () {newDiv.remove() }, 5000);
+};
+
 $(function() {
     $("#ball").draggable({ axis: 'y' , cursor: 'move', containment: '#lever'});
 
@@ -131,6 +143,13 @@ $(function() {
         setTimeout(function () {
             clearInterval(fasterUpdate);
             }, 1500);
+
+        spin("#spin1");
+        spin("#spin2");
+        spin("#spin3");
+        //for(i = 0; i<4000; i+1100) { 
+            //setTimeout(function () {spin("#spin1") }, i);
+        //};
     });
 
     updateLever();
@@ -144,10 +163,11 @@ $(function() {
 	<canvas id="canvas" width="700" height="900"></canvas>
     <div id="slot">
         <div id="machine">
-            <div id="spin1" class="spinner ui-corner-all"></div>
-            <div id="spin2" class="spinner ui-corner-all"></div>
-            <div id="spin3" class="spinner ui-corner-all"></div>
+            <div id="spin1" class="spinnerz ui-corner-all"></div>
+            <div id="spin2" class="spinnerz ui-corner-all"></div>
+            <div id="spin3" class="spinnerz ui-corner-all"></div>
         </div>
+
         <div id="leverbox" class="ui-corner-right"></div> 
         <div id="lever">
             <a href="#">
