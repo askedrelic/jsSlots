@@ -20,6 +20,20 @@
     margin: 0px auto -1px auto; 
 }
 
+#robot {
+    position: fixed;
+    top: 100px;
+    left: 300px;
+    z-index: -1;
+}
+
+#lever {
+    position: relative;
+    top: 50px;
+    width: 30px;
+    height: 300px;
+}
+
 #ball{
     position:relative;
     top: 0px;
@@ -32,16 +46,10 @@
 
 #chain {
     position:relative;
-    top: 150px;
+    top: 125px;
     left: 0px;
 }
 
-#lever {
-    position: relative;
-    top: 50px;
-    width: 30px;
-    height: 360px;
-}
 
 </style>
 
@@ -62,7 +70,8 @@ function updateLever() {
     ctx.beginPath();
     ctx.moveTo(d1.left, d1.top);
 
-    ctx.rect(d2.left+10, d2.top, 10, d1.top+10-d2.top);
+    var bottom = d1.top+10-d2.top;
+    ctx.rect(d2.left+10, d2.top, 10, bottom);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
