@@ -27,6 +27,33 @@
     float: left;
 }
 
+#spin1 {
+    position: relative;
+    top: 236px;
+    left: 85px;
+    display: inline-block;
+}
+
+#spin2 {
+    position: relative;
+    top: 235px;
+    left: 93px;
+    display: inline-block;
+}
+
+#spin3 {
+    position: relative;
+    top: 233px;
+    left: 100px;
+    display: inline-block;
+}
+
+.spinner {
+    width: 74px;
+    height: 94px;
+    background-color: #fff;
+}
+
 #lever {
     position: relative;
     top: 175px;
@@ -50,8 +77,6 @@
     top: 125px;
     left: 0px;
 }
-
-
 </style>
 
 <script type="text/javascript">
@@ -106,6 +131,9 @@ $(function() {
 	<canvas id="canvas" width="900" height="900"></canvas>
     <div id="slot">
         <div id="machine">
+            <div id="spin1" class="spinner"></div>
+            <div id="spin2" class="spinner"></div>
+            <div id="spin3" class="spinner"></div>
         </div>
         <div id="lever">
             <a href="#">
@@ -116,7 +144,6 @@ $(function() {
         </div>
         
     </div>
-<div id="debug"></div>
 </body>
 </html>    
                 
