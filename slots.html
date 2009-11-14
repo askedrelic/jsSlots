@@ -17,7 +17,7 @@
 #slot {
     width: 500px;
     height: 900px;
-    margin: 0px auto -1px auto; 
+    padding-left: 200px;
 }
 
 #machine{
@@ -37,21 +37,32 @@
 #spin2 {
     position: relative;
     top: 235px;
-    left: 93px;
+    left: 91px;
     display: inline-block;
 }
 
 #spin3 {
     position: relative;
     top: 233px;
-    left: 100px;
+    left: 96px;
+    width: 73px;
     display: inline-block;
 }
 
 .spinner {
-    width: 74px;
+    width: 75px;
     height: 94px;
     background-color: #fff;
+}
+
+#leverbox {
+    position: relative;
+    top: 320px;
+    left: -20px;
+    width: 60px;
+    height: 25px;
+    background: #CCC;
+    float: left;
 }
 
 #lever {
@@ -60,9 +71,11 @@
     left: 430px;
     width: 30px;
     height: 300px;
+    margin: 0px;
+    margin-right: 0px;
 }
 
-#ball{
+#ball {
     position:relative;
     top: 0px;
     left: 0px;
@@ -128,19 +141,19 @@ $(function() {
     
       </head>
 <body>
-	<canvas id="canvas" width="900" height="900"></canvas>
+	<canvas id="canvas" width="700" height="900"></canvas>
     <div id="slot">
         <div id="machine">
-            <div id="spin1" class="spinner"></div>
-            <div id="spin2" class="spinner"></div>
-            <div id="spin3" class="spinner"></div>
+            <div id="spin1" class="spinner ui-corner-all"></div>
+            <div id="spin2" class="spinner ui-corner-all"></div>
+            <div id="spin3" class="spinner ui-corner-all"></div>
         </div>
+        <div id="leverbox" class="ui-corner-right"></div> 
         <div id="lever">
             <a href="#">
             <div id="ball" class="ui-corner-all"></div>
             </a>
-            <div id="chain">
-            </div> 
+            <div id="chain"></div> 
         </div>
         
     </div>
