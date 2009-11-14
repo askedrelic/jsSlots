@@ -72,7 +72,16 @@
     width: 30px;
     height: 300px;
     margin: 0px;
-    margin-right: 0px;
+}
+
+#sweetspot {
+    position: relative;
+    top: 230px;
+    left: 0px;
+    width: 30px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
 }
 
 #ball {
@@ -129,14 +138,28 @@ function spin(div) {
 };
 
 $(function() {
-    $("#ball").draggable({ axis: 'y' , cursor: 'move', containment: '#lever'});
+    //manually set contain because Safari wasn't listening
+    var l = $("#lever").offset();
+    var contain = [l.left, l.top, l.left+30, l.top+270];
+    $("#ball").draggable({ axis: 'y' , cursor: 'move', containment: contain});
+    $("#sweetspot").droppable({
+        drop: function(event, ui) {
+            spin("#spin1");
+            spin("#spin2");
+            spin("#spin3");
+            //for(i = 0; i<4000; i+1100) { 
+                //setTimeout(function () {spin("#spin1") }, i);
+            //};
+        }
+    });
+    
 
     $("#ball").bind('drag', function (event,ui) {
         updateLever();
     });
 
     //Messy section. Makes the line get updated hella faster and in the background, 
-    //while the "move back to home" animation is taking place.
+    //while the "move ball to home" animation is taking place.
     $("#ball").bind('dragstop', function (event,ui) {
         var fasterUpdate = setInterval(updateLever, 50);
         $("#ball").animate({top:0}, 1500, updateLever);
@@ -144,12 +167,6 @@ $(function() {
             clearInterval(fasterUpdate);
             }, 1500);
 
-        spin("#spin1");
-        spin("#spin2");
-        spin("#spin3");
-        //for(i = 0; i<4000; i+1100) { 
-            //setTimeout(function () {spin("#spin1") }, i);
-        //};
     });
 
     updateLever();
@@ -174,8 +191,8 @@ $(function() {
             <div id="ball" class="ui-corner-all"></div>
             </a>
             <div id="chain"></div> 
-        </div>
-        
+            <div id="sweetspot"></div> 
+            </div>
     </div>
 </body>
 </html>    
