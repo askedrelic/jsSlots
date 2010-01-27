@@ -125,17 +125,21 @@ function updateLever() {
     ctx.stroke();
 };
 
-function spin(div) {
+function spin(div, speed) {
     var spinLoc = $(div).offset();
     var newDiv = $("<div style='position:absolute; float:left; z-index: 100;'> lololol </div>");
     newDiv
         .hide()
         .css('top', spinLoc.top+10)
         .css('left', spinLoc.left+10);
-    $("#spin1").before(newDiv);
-    newDiv.slideToggle(300).animate({top:spinLoc.top+75}, 600).slideUp(300);
+    $(div).before(newDiv);
+    newDiv.slideToggle(speed).animate({top:spinLoc.top+75}, speed*2).slideUp(speed);
     setTimeout(function () {newDiv.remove() }, 2500);
 };
+
+function rand(range) {
+    return Math.floor(Math.random()*range);
+}
 
 $(function() {
     //manually set contain because Safari wasn't listening
@@ -144,12 +148,27 @@ $(function() {
     $("#ball").draggable({ axis: 'y' , cursor: 'move', containment: contain});
     $("#sweetspot").droppable({
         drop: function(event, ui) {
-            spin("#spin1");
-            spin("#spin2");
-            spin("#spin3");
-            //for(i = 0; i<4000; i+1100) { 
-                //setTimeout(function () {spin("#spin1") }, i);
-            //};
+            //spin("#spin1");
+
+            for(i=0; i<=4; i++) { 
+                //300 start speed
+                var slowDown = 0;
+                var speed1 = 300+slowDown;
+                var speed2 = i*600;
+                setTimeout(function () {spin("#spin3", speed1) }, speed2 );
+                setTimeout(function () {spin("#spin1", speed1) }, speed2 );
+                setTimeout(function () {spin("#spin2", speed1) }, speed2 );
+            };
+
+            for(i=0; i<=2; i++) { 
+                //300 start speed
+                var slowDown = 0;
+                var speed3 = 450+slowDown;
+                var speed4 = 3100+(i*700);
+                setTimeout(function () {spin("#spin3", speed3) }, speed4 );
+                setTimeout(function () {spin("#spin1", speed3) }, speed4 );
+                setTimeout(function () {spin("#spin2", speed3) }, speed4 );
+            };
         }
     });
     
