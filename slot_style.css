@@ -1,0 +1,91 @@
+#canvas {
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+#slot {
+    width: 500px;
+    height: 900px;
+    padding-left: 200px;
+}
+
+#machine{
+    background: url("playboy.jpg");
+    width: 425px;
+    height: 700px;
+    float: left;
+}
+
+#spin1 {
+    position: relative;
+    top: 236px;
+    left: 85px;
+    display: inline-block;
+}
+
+#spin2 {
+    position: relative;
+    top: 235px;
+    left: 91px;
+    display: inline-block;
+}
+
+#spin3 {
+    position: relative;
+    top: 233px;
+    left: 96px;
+    width: 73px;
+    display: inline-block;
+}
+
+.spinnerz {
+    width: 75px;
+    height: 94px;
+    background-color: #fff;
+}
+
+#leverbox {
+    position: relative;
+    top: 320px;
+    left: -20px;
+    width: 60px;
+    height: 25px;
+    background: #CCC;
+    float: left;
+}
+
+#lever {
+    position: relative;
+    top: 175px;
+    left: 430px;
+    width: 30px;
+    height: 300px;
+    margin: 0px;
+}
+
+#sweetspot {
+    position: relative;
+    top: 230px;
+    left: 0px;
+    width: 30px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#ball {
+    position:relative;
+    top: 0px;
+    left: 0px;
+
+    background-color: red; 
+    width: 30px; 
+    height: 30px;
+}
+
+#chain {
+    position:relative;
+    top: 125px;
+    left: 0px;
+}
